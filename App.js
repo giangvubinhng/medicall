@@ -10,7 +10,8 @@ export default function App() {
       <Stack.Navigator screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen name="Base" component={BottomBar} />
+        <Stack.Screen name="Base" component={BottomBar}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
