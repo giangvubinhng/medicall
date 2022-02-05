@@ -1,0 +1,134 @@
+import React, { Component} from 'react';
+import { StyleSheet, Text, View, Button, Alert, TouchableOpacity} from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import Signup from '../components/Signup';
+import { createStackNavigator } from '@react-navigation/stack';
+class Login extends Component {   
+    constructor() {
+        super();
+        this.state = { 
+          email: '', 
+          password: '',
+          isLoading: false
+        }
+      }
+    onTextChange = (val, prop) => {
+        const state = this.state;
+        state[prop] = val;
+        this.setState(state);
+    }
+    render(){
+    return (
+        <View style={styles.container}>
+            <View style={styles.front}>
+
+            </View>
+            <View style={styles.body}>
+                <Text style={styles.title}>Login</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 30,}}>
+                <Text style={styles.text}>Email</Text>
+                <TextInput style={styles.input} onChangeText={(val) => this.onTextChange(val, 'email')} value={this.state.email}/>
+                    
+                </View>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={styles.text}>Password</Text>
+                <TextInput secureTextEntry={true} style={styles.input1} onChangeText={(val) => this.onTextChange(val, 'password')} maxLength={20} value={this.state.password}/>
+                </View>
+                <TouchableOpacity
+                style={styles.button}
+                onPress={() => console.log(this.state.password)}
+                >
+                    <Text style={styles.but}>Log in</Text>
+                </TouchableOpacity>
+                <Text style={styles.signup}>Don't have account</Text>
+                <Text style={styles.signin} onPress={() => this.props.navigation.navigate('Signup')}>Sign up</Text>
+                <Text style={styles.google}>Log In with Google</Text>
+            </View>
+        </View>
+    );
+};
+}
+
+const styles = StyleSheet.create({
+    but: {
+        fontSize: 20,
+    },
+    button: {
+        position: 'relative',
+        justifyContent: 'center',
+        borderRadius: 20,
+        alignItems: "center",
+        backgroundColor: "#CCB2FF",
+        padding: 10,
+        width: 200,
+        marginTop: 40,
+        marginLeft: 100,
+    },
+    google: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginTop: 70,
+    },
+    signin:{
+        fontSize: 24,
+        textAlign: 'center',
+        marginTop: 20,
+        textDecorationLine: 'underline'
+    },
+    signup: {
+        marginTop: 50,
+        textAlign: 'center',
+        fontSize: 18,
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 30,
+        marginBottom: 40,
+        marginTop: 20,
+    },
+    input: {
+        height: 34,
+        width: 240,
+        padding: 10,
+        backgroundColor: '#C4C4C4',
+        marginLeft: 50,
+      }, 
+      input1: {
+        height: 40,
+        width: 240,
+        marginLeft: 7,
+        padding: 10,
+        backgroundColor: '#C4C4C4',
+      }, 
+    text: {
+        textAlign: 'left',
+        fontSize: 24,
+        marginRight: 20,
+    }, 
+    container: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    front: {
+        flex: 1,
+        backgroundColor: '#8C33FF',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    body: {
+        flex: 3,
+        display: 'flex',
+        backgroundColor: '#F6F5F5',
+        borderRadius: 50,
+        marginTop: 10,
+        borderTopLeftRadius: 24,
+        position: 'absolute',
+        width: 414,
+        height: 678,
+        left: 0,
+        top: 180,
+    }
+});
+
+export default Login;
