@@ -6,8 +6,8 @@ import Clinic from '../components/Clinic';
 import Pill from '../components/Pill';
 import More from '../components/More';
 
-const Tab = createBottomTabNavigator();
 
+const Tab = createBottomTabNavigator();
 const BottomBar = () => {
     return (
         <Tab.Navigator
@@ -29,7 +29,7 @@ const BottomBar = () => {
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="home" color={color} size={size} />
-                    ),
+                    )
                 }}
             />
             <Tab.Screen
