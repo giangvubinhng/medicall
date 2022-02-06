@@ -2,7 +2,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BottomBar from './Tabbar/BottomBar';
 import {NavigationContainer} from '@react-navigation/native';
 import Login from './components/Login';
-import firebaseConfig from './config/fbConfig'
 import Signup from './components/Signup';
 import AddPill from './components/crud/AddPill';
 import Pill from './components/Pill';
