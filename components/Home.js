@@ -8,8 +8,14 @@ const timeConvert = (time) => {
     const date = new Date(time);
     return date.toISOString().split('T')[0];
 }
-const Home = () => {
+const Home = ({ navigation }) => {
     const [items, setItems] = useState({});
+
+    const [isModalVisible, setModalVisible] = useState(false);
+    const toggleModalVisibility = () => {
+        setModalVisible(!isModalVisible);
+    };
+
     const loadItems = (day) => {
         setTimeout(() => {
             for (let i = -15; i < 85; i++) {
@@ -70,10 +76,12 @@ const Home = () => {
             />
             <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => { alert('Floating Button Clicked'); }}
+                onPress={() => navigation.navigate('AddPill')}
                 style={styles.touchableOpacityStyle}>
                 <MaterialCommunityIcons name="plus-circle" size={50} color={"#8c33ff"} />
             </TouchableOpacity>
+
+
         </View>
     );
 };
