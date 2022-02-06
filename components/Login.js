@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { StyleSheet, Text, View, Button, Alert, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, TouchableOpacity, Image} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Signup from '../components/Signup';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,6 +24,7 @@ class Login extends Component {
 
             </View>
             <View style={styles.body}>
+                <Image source={require('./Logo_v2.png')} style={styles.image}/>
                 <Text style={styles.title}>Login</Text>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 30,}}>
                 <Text style={styles.text}>Email</Text>
@@ -50,6 +51,13 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
+    image:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginTop: 15,
+
+    },
     but: {
         fontSize: 20,
     },
@@ -67,16 +75,16 @@ const styles = StyleSheet.create({
     google: {
         textAlign: 'center',
         fontSize: 20,
-        marginTop: 70,
+        marginTop: 50,
     },
     signin:{
         fontSize: 24,
         textAlign: 'center',
         marginTop: 20,
-        textDecorationLine: 'underline'
+        color: '#8C33FF',
     },
     signup: {
-        marginTop: 50,
+        marginTop: 30,
         textAlign: 'center',
         fontSize: 18,
     },
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
       input1: {
         height: 40,
         width: 240,
-        marginLeft: 7,
+        marginLeft: 4,
         padding: 10,
         backgroundColor: '#C4C4C4',
       }, 
@@ -104,6 +112,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontSize: 24,
         marginRight: 20,
+        marginLeft: 5,
     }, 
     container: {
         height: '100%',
@@ -120,14 +129,14 @@ const styles = StyleSheet.create({
         flex: 3,
         display: 'flex',
         backgroundColor: '#F6F5F5',
-        borderRadius: 50,
+        borderRadius: 64,
         marginTop: 10,
-        borderTopLeftRadius: 24,
+        borderTopLeftRadius: 30,
         position: 'absolute',
         width: 414,
         height: 678,
         left: 0,
-        top: 180,
+        top: 182,
     }
 });
 

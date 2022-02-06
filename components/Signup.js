@@ -17,18 +17,21 @@ class Signup extends Component {
         state[prop] = val;
         this.setState(state);
     }
-    check = (pas, repas) =>{
-        if(pas === repas){
-            this.props.navigation.navigate('Login')
+    check = (pas, repas, name, email) =>{
+        if(pas === "" || name === "" || email === ""){
+            Alert.alert('form has not completed yet. Please fill the form');
         }
-        else{
-            Alert.alert('Password do not match. Try again')
+        else if(pas !== repas){
+            Alert.alert('Password do not match. Try again');
+        }
+        else {
+            this.props.navigation.navigate('Login');
         }
     }
       render() {return (
         <View style={styles.container}>
             <View style={styles.front}>
-
+                <Image source={require('./unnamed.png')} style={styles.image}/>
             </View>
             <View style = {styles.body}>
                 <Text style={styles.title}>Register</Text>
@@ -50,7 +53,7 @@ class Signup extends Component {
                 </View>
                 <TouchableOpacity
                 style={styles.button}
-                onPress={() => this.check(this.state.password, this.state.reenter)}
+                onPress={() => this.check(this.state.password, this.state.reenter, this.state.name, this.state.email)}
                 >
                     <Text style={styles.but}>Sign Up</Text>
                 </TouchableOpacity>
@@ -62,6 +65,13 @@ class Signup extends Component {
 }
 
   const styles = StyleSheet.create({
+    image:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginTop: 15,
+
+    },
     google: {
         textAlign: 'center',
         fontSize: 20,
@@ -85,6 +95,7 @@ class Signup extends Component {
         textAlign: 'left',
         fontSize: 24,
         marginRight: 20,
+        marginLeft: 5,
     }, 
     input: {
         height: 34,
@@ -135,14 +146,14 @@ class Signup extends Component {
         flex: 3,
         display: 'flex',
         backgroundColor: '#F6F5F5',
-        borderRadius: 50,
+        borderRadius: 64,
         marginTop: 10,
-        borderTopLeftRadius: 24,
+        borderTopLeftRadius: 30,
         position: 'absolute',
         width: 414,
         height: 678,
         left: 0,
-        top: 180,
+        top: 182,
 
     }
   });
