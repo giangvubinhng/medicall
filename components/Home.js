@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 
@@ -50,7 +50,7 @@ const Home = ({navigation}) => {
 								justifyContent: 'space-between',
 								alignItems: 'center',
 							}}>
-							<Avatar.Text label="J" />
+							<Image source={require('../assets/pill2.png')} />
 						</View>
 					</Card.Content>
 				</Card>
