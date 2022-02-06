@@ -14,7 +14,7 @@ const locationsService = {
 			return res.data.results
 		}
 		catch (e) {
-			console.log("error occured")
+			console.log("error occured: " + e)
 		}
 	}
 }
