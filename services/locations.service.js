@@ -7,8 +7,9 @@ const locationsService = {
 		const location = `location=${lat},${long}`;
 		const radius = '&radius=10000';
 		const type = '&keyword=hospital'
+		const openNow = '&opennow'
 		const key = `&key=${config.API_KEY}`
-		const hospitalSearchUrl = url + location + radius + type + key
+		const hospitalSearchUrl = url + location + radius + type + openNow + key
 		try {
 			const res = await axios.get(hospitalSearchUrl)
 			return res.data.results
