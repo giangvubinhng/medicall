@@ -2,7 +2,7 @@
 
 VISUALIZATION
 ===============
-
+<img src='https://github.com/giangvubinhng/medicall/blob/main/MediCallAppDemo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 TABLE OF CONTENTS
 ====================
