@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
 import { StyleSheet, Text, View, Button, Alert, TouchableOpacity, Image} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import Signup from '../components/Signup';
-import { createStackNavigator } from '@react-navigation/stack';
+import {auth} from '../config/fbConfig'
 class Login extends Component {   
     constructor() {
         super();
@@ -17,6 +16,23 @@ class Login extends Component {
         state[prop] = val;
         this.setState(state);
     }
+    Login = (email, password) =>{
+        if(password === "" || email === ""){
+            Alert.alert('form has not completed yet. Please fill the form');
+        }
+        else if(password.length < 6){
+            Alert.alert('Password should have 6 characters long.');
+        }
+        else{
+            this.setState({isLoading: true,});
+            auth.signInWithEmailAndPassword(this.state.email,this.state.password).then((res) =>{
+                console.log(res);
+                console.log('Login Sucessfully');
+                this.setState({email: '',password: '',isLoading:false});
+                this.props.navigation.navigate('Base');
+            }).catch(error =>  Alert.alert('Wrong information. Please try again'))
+        }
+    }
     render(){
     return (
         <View style={styles.container}>
@@ -24,7 +40,7 @@ class Login extends Component {
 
             </View>
             <View style={styles.body}>
-                <Image source={require('./Logo_v2.png')} style={styles.image}/>
+                <Image source={require('../assets/Logo_v2.png')} style={styles.image}/>
                 <Text style={styles.title}>Login</Text>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 30,}}>
                 <Text style={styles.text}>Email</Text>
@@ -37,13 +53,16 @@ class Login extends Component {
                 </View>
                 <TouchableOpacity
                 style={styles.button}
-                onPress={() => console.log(this.state.password)}
+                onPress={() => this.Login(this.state.email, this.state.password)}
                 >
                     <Text style={styles.but}>Log in</Text>
                 </TouchableOpacity>
                 <Text style={styles.signup}>Don't have account</Text>
                 <Text style={styles.signin} onPress={() => this.props.navigation.navigate('Signup')}>Sign up</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20,}}>
+                <Image source={require('../assets/google.png')} style={styles.image2}/>
                 <Text style={styles.google}>Log In with Google</Text>
+                </View>
             </View>
         </View>
     );
@@ -58,6 +77,9 @@ const styles = StyleSheet.create({
         marginTop: 15,
 
     },
+    image2: {
+        marginLeft: 22
+    },  
     but: {
         fontSize: 20,
     },
@@ -75,7 +97,8 @@ const styles = StyleSheet.create({
     google: {
         textAlign: 'center',
         fontSize: 20,
-        marginTop: 50,
+        marginTop: 30,
+        marginLeft: 30
     },
     signin:{
         fontSize: 24,

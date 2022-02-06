@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Alert, TouchableOpacity, Image} from 'react-native';
+import {auth} from '../config/fbConfig'
 import { TextInput } from 'react-native-gesture-handler';
+
 class Signup extends Component {
     constructor(){
         super();
@@ -9,6 +11,7 @@ class Signup extends Component {
             email: '',
             password: '',
             reenter: '',
+            isLoading: false
         }
     }
 
@@ -17,15 +20,26 @@ class Signup extends Component {
         state[prop] = val;
         this.setState(state);
     }
-    check = (pas, repas, name, email) =>{
+    check = (pas, repas, name, email) => {
         if(pas === "" || name === "" || email === ""){
             Alert.alert('form has not completed yet. Please fill the form');
         }
         else if(pas !== repas){
             Alert.alert('Password do not match. Try again');
         }
+        else if(pas.length < 6){
+            Alert.alert('Password should have 6 characters long.');
+        }
         else {
-            this.props.navigation.navigate('Login');
+            this.setState({isLoading: true,});
+            auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((res) => {
+                res.user.updateProfile({
+                    displayName: this.state.name,
+                })
+                console.log('user Create');
+                this.setState({name:'', email:'',password:'',reenter:'',isLoading: false})
+                this.props.navigation.navigate('Login');
+            });
         }
     }
       render() {return (
@@ -57,7 +71,10 @@ class Signup extends Component {
                 >
                     <Text style={styles.but}>Sign Up</Text>
                 </TouchableOpacity>
+                <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20,}}>
+                <Image source={require('../assets/google.png')} style={styles.image2}/>
                 <Text style={styles.google}>Sign Up with Google</Text>
+                </View>
             </View>
         </View>
     );
@@ -72,6 +89,9 @@ class Signup extends Component {
         marginTop: 15,
 
     },
+    image2: {
+        marginLeft: 22
+    },  
     google: {
         textAlign: 'center',
         fontSize: 20,
