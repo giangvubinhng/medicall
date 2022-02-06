@@ -26,8 +26,6 @@ class Login extends Component {
         else{
             this.setState({isLoading: true,});
             auth.signInWithEmailAndPassword(this.state.email,this.state.password).then((res) =>{
-                console.log(res);
-                console.log('Login Sucessfully');
                 this.setState({email: '',password: '',isLoading:false});
                 this.props.navigation.navigate('Base');
             }).catch(error =>  Alert.alert('Wrong information. Please try again'))

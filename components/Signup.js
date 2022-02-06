@@ -36,7 +36,6 @@ class Signup extends Component {
                 res.user.updateProfile({
                     displayName: this.state.name,
                 })
-                console.log('user Create');
                 this.setState({name:'', email:'',password:'',reenter:'',isLoading: false})
                 this.props.navigation.navigate('Login');
             });

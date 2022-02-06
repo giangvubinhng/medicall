@@ -1,6 +1,5 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';   
 import 'firebase/compat/firestore';
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
