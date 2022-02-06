@@ -20,7 +20,7 @@ class More extends Component {
                 style={styles.button}
                 onPress={() => this.handleSignout()}
                 >
-                <Text style={styles.but}>Sign Out</Text>
+                <Text style={styles.but}>Log Out</Text>
             </TouchableOpacity>
         </View>
     );
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 200,
         marginTop: 20,
-        marginLeft: 100,
     },
 });
 
